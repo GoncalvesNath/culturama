@@ -1,0 +1,102 @@
+.banner {
+    display: grid;
+    gap: 1rem;
+}
+
+.banner img:nth-child(1){
+    grid-column: 1/3;
+}
+
+.banner img:nth-child(4) {
+    grid-column: 2/3; /*nesse caso o posicionamento é determindo de acordo com a contagem de linhas do grid, sendo a segunda e terceira linha da coluna e segunda e quarta linhas do grid */
+    grid-row: 2/4;
+}
+
+.eventos__item {
+    display: grid;
+    grid-template-columns: 1fr au; 
+    grid-template-rows: auto repeat(2, 1fr) auto;
+    grid-template-areas: 
+    "imagem imagem"
+    "nome nome"
+    "data data"
+    "local botao";
+}
+
+.eventos__item img {
+    grid-area: imagem;
+}
+.eventos__item h3 {
+    grid-area: nome;
+    align-self: center;
+}
+.eventos__item h4 {
+    grid-area: data;
+}
+.eventos__item h5 {
+    grid-area: local;
+    align-self: end;
+}
+.eventos__item button {
+    grid-area: botao;
+}
+
+/*desafio Aula 4*/
+
+.agenda__item {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto 1fr;
+}
+ 
+.agenda__item img {
+    grid-column: 1/3;
+}
+
+@media (min-width: 720px) {
+
+    .banner{
+        grid-template-columns: calc(50% - 0.75rem) auto auto; /*determina a largura de cada coluna, nesse caso a primeira coluna, feita com a imagem amarela do banner, precisou da função calc porque ela deveria ocupar 50% do grid mas sem contar o espaçamento de 1.5rem declarado no colum gap, que foi divido entre as tres colunas. o valor auto foi declarado nas outras colunas para conhecimento, já que ele seria usao em todas as outras colunas, mas caso não haja declaração o sistema já considera ele por padrão*/
+        column-gap: 1.5rem;
+    }
+    .banner img:nth-child(1){
+        grid-column: 1/2;
+        grid-row: 1/3;
+    }
+    
+    .banner img:nth-child(4) {
+        grid-column: 3/4; 
+        grid-row: 1/3;
+    }
+}
+
+@media(min-width: 1440px) {
+
+    .categorias {
+        display: grid;
+        grid-template-columns: calc(50% - 0.75rem);
+        grid-template-areas:
+            "titulo titulo"
+            "lista destaque"
+            "lista imagem";
+        grid-template-rows: auto 1fr auto;
+        row-gap: 1rem;
+        column-gap: 1.5rem;
+    }
+
+    .categorias__titulo {
+        grid-area: titulo;
+    }
+
+    .categorias__lista {
+        grid-area: lista;
+    }
+
+    .categorias__destaques {
+        grid-area: destaque;
+    }
+
+    .categorias__imagem {
+        grid-area: imagem;
+    }
+}
